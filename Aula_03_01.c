@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> // ADD STRING
 
 typedef struct Node{
       int id;
-      char nome[30];
+      char nome[30]; // ADD STRING
       struct Node *prox;
 } Node;
 
-void enqueue(Node **head, Node **tail, char nome, int id);
+void enqueue(Node **head, Node **tail, int id, char *nome); // UPDATE ID && ADD NOME
 int dequeue(Node **head, Node **tail);
 void printFila(Node *head);
 int tamanho(Node *head);
@@ -19,9 +19,9 @@ int main() {
   Node *tail = NULL;
   int valor;
 
-  enqueue(&head, &tail, "Pedro", 44);
-  enqueue(&head, &tail, "Francisco", 87);
-  enqueue(&head, &tail, "Joana", 23);
+  enqueue(&head, &tail, 44, "Pedro"); // ADD NOME
+  enqueue(&head, &tail, 87, "Coelho");
+  enqueue(&head, &tail, 23, "Corisco");
 
   printFila(head);
 
@@ -36,12 +36,12 @@ int main() {
 }
 
 // enfileira nó
-void enqueue(Node **head, Node **tail, char nome, int id) {
+void enqueue(Node **head, Node **tail, int id, char *nome) {
   Node *novo = (Node *)malloc(sizeof(Node));
 
   if (novo != NULL) {
     novo->id = id;
-    strncpy(novo->nome, nome);
+    strncpy(novo->nome, nome, sizeof(novo->nome)); // COPY NAME
     novo->prox = NULL;
     
     if (*head == NULL) {
@@ -74,8 +74,7 @@ int dequeue(Node **head, Node **tail) {
 // imprime a fila
 void printFila(Node *head) {
   while (head != NULL) {
-    printf("%d-> ", head->id);
-    printf("%s", head->nome);
+    printf("ID: %d / Nome: %s ---> ", head->id, head->nome); // PRINT NOME
     head = head->prox;
   }
   printf("NULL \n");
