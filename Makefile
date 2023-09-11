@@ -2,7 +2,8 @@ CC = gcc
 
 CFLAGS = -Wall
 
-OUTPUT = OUT
+# Name of the output executable
+OUTPUT = a
 
 SRC_FILE = Lista01_03-2.c
 
