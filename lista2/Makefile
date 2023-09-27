@@ -4,12 +4,12 @@ CFLAGS = -Wall
 
 OUTPUT = out
 
-SRC_FILE = x.c
+SRC_FILE = 01.c
 
 all: $(OUTPUT)
 
 $(OUTPUT): $(SRC_FILE)
-	$(CC) $(CFLAGS) -o $(OUTPUT) $(SRC_FILE) -lm
+	$(CC) $(CFLAGS) -o $(OUTPUT) $(SRC_FILE)
 
 clean:
 	rm -f $(OUTPUT) $(SRC_FILE:.c=.o)
@@ -22,4 +22,4 @@ debug: $(SRC_FILE)
 	$(CC) $(CFLAGS) -o $(OUTPUT) $(SRC_FILE)
 	gdb ./$(OUTPUT)
 
-.PHONY: all clean run debug
+.PHONY: all clean run debugm
