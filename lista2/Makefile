@@ -4,7 +4,7 @@ CFLAGS = -Wall
 
 OUTPUT = out
 
-SRC_FILE = 01.c
+SRC_FILE = geracaoArray.c
 
 all: $(OUTPUT)
 
