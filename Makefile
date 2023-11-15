@@ -1,25 +1,21 @@
 CC = gcc
-
 CFLAGS = -Wall
-
 OUTPUT = out
-
-SRC_FILE = x.c
+SRC_FILE = arvore_binaria.c
 
 all: $(OUTPUT)
 
 $(OUTPUT): $(SRC_FILE)
-	$(CC) $(CFLAGS) -o $(OUTPUT) $(SRC_FILE) -lm
+	$(CC) $(CFLAGS) -o $(OUTPUT) $(SRC_FILE)
 
 clean:
-	rm -f $(OUTPUT) $(SRC_FILE:.c=.o)
+	rm -f $(OUTPUT)
 
 run:
 	./$(OUTPUT)
 
 debug: CFLAGS += -g
-debug: $(SRC_FILE)
-	$(CC) $(CFLAGS) -o $(OUTPUT) $(SRC_FILE)
+debug: all
 	gdb ./$(OUTPUT)
 
 .PHONY: all clean run debug
